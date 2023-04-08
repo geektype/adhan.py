@@ -1,10 +1,16 @@
 [tool.poetry]
-name = "adhan"
-version = "0.1.0"
+name = "adhan-time"
+version = "0.2.0"
 description = "A complete wrapper for the aladhan API"
 authors = ["Abdullah Ahmed <abdullah@softcomnetworks.com>"]
+homepage = "https://github.com/geektype/adhan.py"
+repository = "https://github.com/geektype/adhan.py"
 license = "Apache License 2.0"
+keywords = ["adhan", "prayer", "aladhan", "prayer times", "islamic prayer times"]
 readme = "README.md"
+packages = [
+    { include = "adhan" }
+]
 
 [tool.poetry.dependencies]
 python = "^3.11"
