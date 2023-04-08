@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "adhan"
+version = "0.1.0"
+description = "A complete wrapper for the aladhan API"
+authors = ["Abdullah Ahmed <abdullah@softcomnetworks.com>"]
+license = "Apache License 2.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+requests = "^2.28.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
