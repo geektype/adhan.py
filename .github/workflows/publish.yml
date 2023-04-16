@@ -1,5 +1,5 @@
 name: publish
-run-name: Publishing to Pypi
+run-name: Release
 on:
   push:
     branches:
@@ -28,12 +28,16 @@ jobs:
           python -m poetry config virtualenvs.in-project true
       - name: Bump version
         run: |
-          echo ${{ steps.tag_version.outputs.new_version }}
           python -m poetry version ${{ steps.tag_version.outputs.new_version }}
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
           git add pyproject.toml
           git commit -m "Bump version to ${{ steps.tag_version.outputs.new_version }}"
           git push
-        # with:
-        #   github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish to PyPi
+        env:
+          PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
+        run: |
+          git pull
+          poetry config pypi-token.pypi $PYPI_TOKEN
+          poetry publish --build
