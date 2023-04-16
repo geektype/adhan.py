@@ -28,10 +28,10 @@ jobs:
           python -m poetry config virtualenvs.in-project true
       - name: Bump version
         run: |
-          echo {{ steps.tag_version.ouputs.new_version }}
-          python -m poetry version {{ steps.tag_version.ouputs.new_version }}
+          echo ${{ steps.tag_version.ouputs.new_version }}
+          python -m poetry version ${{ steps.tag_version.ouputs.new_version }}
           git add pyproject.toml
-          git commit -m "Bump version to {{ steps.tag_version.ouputs.new_version }}"
+          git commit -m "Bump version to ${{ steps.tag_version.ouputs.new_version }}"
           git push
         # with:
         #   github_token: ${{ secrets.GITHUB_TOKEN }}
