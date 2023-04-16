@@ -33,5 +33,5 @@ jobs:
           git add pyproject.toml
           git commit -m "Bump version to {{ steps.tag_version.ouputs.new_version }}"
           git push
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+        # with:
+        #   github_token: ${{ secrets.GITHUB_TOKEN }}
