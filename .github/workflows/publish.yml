@@ -10,12 +10,11 @@ jobs:
     permissions: write-all
     steps:
       - uses: actions/checkout@v3
-      - name: Bump version and push tag
+      - name: Create new version and push tag
         id: tag_version
         uses: mathieudutour/github-tag-action@v6.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Setup Python
         uses: actions/setup-python@v3
         with:
@@ -27,7 +26,12 @@ jobs:
       - name: Put venv in project directory
         run: |
           python -m poetry config virtualenvs.in-project true
-
-      - name: Install dependencies
+      - name: Bump version
         run: |
-          python -m poetry install
+          git checkout main
+          python -m poetry version {{ steps.tag_version.ouputs.new_version }}
+          git add pyproject.toml
+          git commit -m "Bump version to {{ steps.tag_version.ouputs.new_version }}"
+          git push
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
