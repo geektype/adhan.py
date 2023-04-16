@@ -28,7 +28,7 @@ jobs:
           python -m poetry config virtualenvs.in-project true
       - name: Bump version
         run: |
-          git checkout main
+          echo {{ steps.tag_version.ouputs.new_version }}
           python -m poetry version {{ steps.tag_version.ouputs.new_version }}
           git add pyproject.toml
           git commit -m "Bump version to {{ steps.tag_version.ouputs.new_version }}"
