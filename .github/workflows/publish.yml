@@ -28,13 +28,12 @@ jobs:
           python -m poetry config virtualenvs.in-project true
       - name: Bump version
         run: |
-          echo ${{ steps.tag_version.ouputs.new_version }}
-          echo ${{ github.workspace }}
-          python -m poetry version ${{ steps.tag_version.ouputs.new_version }}
+          echo ${{ steps.tag_version.outputs.new_version }}
+          python -m poetry version ${{ steps.tag_version.outputs.new_version }}
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
           git add pyproject.toml
-          git commit -m "Bump version to ${{ steps.tag_version.ouputs.new_version }}"
+          git commit -m "Bump version to ${{ steps.tag_version.outputs.new_version }}"
           git push
         # with:
         #   github_token: ${{ secrets.GITHUB_TOKEN }}
