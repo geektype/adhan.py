@@ -29,6 +29,7 @@ jobs:
       - name: Bump version
         run: |
           echo ${{ steps.tag_version.ouputs.new_version }}
+          echo ${{ github.workspace }}
           python -m poetry version ${{ steps.tag_version.ouputs.new_version }}
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
