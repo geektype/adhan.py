@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "adhan-time"
-version = "0.2.10"
+version = "0.3.0"
 description = "A complete wrapper for the aladhan API"
 authors = ["Abdullah Ahmed <abdullah@softcomnetworks.com>"]
 homepage = "https://github.com/geektype/adhan.py"
