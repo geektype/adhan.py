@@ -30,6 +30,8 @@ jobs:
         run: |
           echo ${{ steps.tag_version.ouputs.new_version }}
           python -m poetry version ${{ steps.tag_version.ouputs.new_version }}
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
           git add pyproject.toml
           git commit -m "Bump version to ${{ steps.tag_version.ouputs.new_version }}"
           git push
